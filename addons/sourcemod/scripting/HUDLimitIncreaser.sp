@@ -41,4 +41,4 @@ public void OnPluginStart()
 
     /// 1337 -> it just a random and an invalid CRC32 byte
     StoreToAddress(g_SendTableCRC, 1337, NumberType_Int32);
-} 
+}
