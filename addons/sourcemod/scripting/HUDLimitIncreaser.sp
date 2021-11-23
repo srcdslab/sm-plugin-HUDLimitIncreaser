@@ -25,6 +25,7 @@ public void OnPluginStart()
     Address m_iHealth                    = GameConfGetAddress(hConfig, "m_iHealth");
     Address m_iClip1                    = GameConfGetAddress(hConfig, "m_iClip1");
     Address m_iPrimaryReserveAmmoCount    = GameConfGetAddress(hConfig, "m_iPrimaryReserveAmmoCount");
+    Address m_iSecondaryReserveAmmoCount    = GameConfGetAddress(hConfig, "m_iSecondaryReserveAmmoCount");
 
     // Memory patching
     int iPatch = 0;
@@ -38,6 +39,7 @@ public void OnPluginStart()
     StoreToAddress(m_iHealth + view_as<Address>(iBits), iPatch, NumberType_Int32);
     StoreToAddress(m_iClip1 + view_as<Address>(iBits), iPatch, NumberType_Int32);
     StoreToAddress(m_iPrimaryReserveAmmoCount + view_as<Address>(iBits), iPatch, NumberType_Int32);
+    StoreToAddress(m_iSecondaryReserveAmmoCount + view_as<Address>(iBits), iPatch, NumberType_Int32);
 
     /// 1337 -> it just a random and an invalid CRC32 byte
     StoreToAddress(g_SendTableCRC, 1337, NumberType_Int32);

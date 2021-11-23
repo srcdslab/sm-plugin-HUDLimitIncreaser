@@ -105,6 +105,18 @@
                     "read"  "865"
                 }
             }
+			"m_iSecondaryReserveAmmoCount"
+            {
+                "signature" "ServerClassInit<DT_BaseCombatWeapon::ignored>"
+                "linux"
+                {
+                    "read"  "896"
+                }
+                "windows"
+                {
+                    "read"  "877"
+                }
+            }
             "g_SendTableCRC"
             {
                 "signature" "SendTable_Init"
