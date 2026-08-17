@@ -80,29 +80,26 @@ if (m_ArmorValue != Address_Null)
 
 ### Build System
 
-This project uses **SourceKnight** as the build system:
+This project uses native **GitHub Actions** with the SourcePawn compiler (`spcomp`) directly, via `rumblefrog/setup-sp`:
 
 ```yaml
-# sourceknight.yaml configuration
-project:
-  sourceknight: 0.1
-  name: HUDLimitIncreaser
-  dependencies:
-    - name: sourcemod
-      type: tar
-      version: 1.11.0-git6917  # Minimum required version
+# .github/workflows/ci.yml (excerpt)
+- name: Setup SourcePawn compiler
+  uses: rumblefrog/setup-sp@v1.3.1
+  with:
+    version: "1.12.x"
 ```
 
 #### Building Locally
 ```bash
-# If SourceKnight is installed
-sourceknight build
+# Compile with spcomp directly
+spcomp -o addons/sourcemod/plugins/HUDLimitIncreaser.smx addons/sourcemod/scripting/HUDLimitIncreaser.sp
 
 # CI/CD builds automatically on push using GitHub Actions
 ```
 
 #### CI/CD Pipeline
-- **Build**: Uses `maxime1907/action-sourceknight@v1` GitHub Action
+- **Build**: Compiles the plugin with `spcomp` (SourceMod 1.12.x) via `rumblefrog/setup-sp`
 - **Package**: Creates distributable archives with plugins and gamedata
 - **Release**: Automatic releases on tag pushes and main branch commits
 
