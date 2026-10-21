@@ -1,12 +1,14 @@
 #include <sourcemod>
 #include <sdktools>
 
+#pragma newdecls required
+
 public Plugin myinfo = 
 {
 	name = "HUD Limit Increaser",
 	author = "gubka, SHUFEN, maxime1907",
 	description = "Increase HUD limit for money, heath, armor and ammo",
-	version = "1.0",
+	version = "1.1",
 	url = "https://github.com/srcdslab/sm-plugin-HUDLimitIncreaser"
 }
 
@@ -15,17 +17,17 @@ public void OnPluginStart()
     FindConVar("sv_sendtables").SetInt(1);
 
     // Loads a gamedata configs file
-    Handle hConfig = LoadGameConfigFile("HUDLimitIncreaser.games");
+    GameData hConfig = new GameData("HUDLimitIncreaser.games");
 
     // Load other offsets
-    int iBits                            = GameConfGetOffset(hConfig,  "CSendProp::m_nBits");
-    Address g_SendTableCRC                = GameConfGetAddress(hConfig, "g_SendTableCRC");
-    Address m_ArmorValue                = GameConfGetAddress(hConfig, "m_ArmorValue");
-    Address m_iAccount                    = GameConfGetAddress(hConfig, "m_iAccount");
-    Address m_iHealth                    = GameConfGetAddress(hConfig, "m_iHealth");
-    Address m_iClip1                    = GameConfGetAddress(hConfig, "m_iClip1");
-    Address m_iPrimaryReserveAmmoCount    = GameConfGetAddress(hConfig, "m_iPrimaryReserveAmmoCount");
-    Address m_iSecondaryReserveAmmoCount    = GameConfGetAddress(hConfig, "m_iSecondaryReserveAmmoCount");
+    int iBits                            = hConfig.GetOffset("CSendProp::m_nBits");
+    Address g_SendTableCRC                = hConfig.GetAddress("g_SendTableCRC");
+    Address m_ArmorValue                = hConfig.GetAddress("m_ArmorValue");
+    Address m_iAccount                    = hConfig.GetAddress("m_iAccount");
+    Address m_iHealth                    = hConfig.GetAddress("m_iHealth");
+    Address m_iClip1                    = hConfig.GetAddress("m_iClip1");
+    Address m_iPrimaryReserveAmmoCount    = hConfig.GetAddress("m_iPrimaryReserveAmmoCount");
+    Address m_iSecondaryReserveAmmoCount    = hConfig.GetAddress("m_iSecondaryReserveAmmoCount");
 
     // Memory patching
     int iPatch = 0;
