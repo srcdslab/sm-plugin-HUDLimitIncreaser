@@ -8,7 +8,7 @@ public Plugin myinfo =
 	name = "HUD Limit Increaser",
 	author = "gubka, SHUFEN, maxime1907",
 	description = "Increase HUD limit for money, heath, armor and ammo",
-	version = "1.1",
+	version = "1.1.1",
 	url = "https://github.com/srcdslab/sm-plugin-HUDLimitIncreaser"
 }
 
